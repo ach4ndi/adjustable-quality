@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 02. 11. 2025
+  Info:
+    - Initial release
+    - Adjustable Quality Levels
+    - Adjustable Quality Effects
+    - Adjustable science_pack_drain
+    - Adjustable mining_drill_resource_drain
+    - Adjustable beacon_power_usage
+    - Adjustable next_probability

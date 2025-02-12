@@ -1,0 +1,11 @@
+{
+	"name": "adjustable-quality",
+	"version": "2.0.0",
+	"title": "Adjustable Quality",
+	"author": "BanditTech",
+	"factorio_version": "2.0",
+	"dependencies": [
+		"base >= 2.0.13"
+	],
+	"description": "This mod allows for the functionality of quality to be adjusted."
+}
