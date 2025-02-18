@@ -50,38 +50,6 @@ data:extend({{
 	maximum_value = 12,
 	order = "e2"
 }, {
-	type = "int-setting",
-	name = "uncommon_science_pack_drain",
-	setting_type = "startup",
-	default_value = 99,
-	minimum_value = 1,
-	maximum_value = 100,
-	order = "a4"
-}, {
-	type = "int-setting",
-	name = "rare_science_pack_drain",
-	setting_type = "startup",
-	default_value = 98,
-	minimum_value = 1,
-	maximum_value = 100,
-	order = "b4"
-}, {
-	type = "int-setting",
-	name = "epic_science_pack_drain",
-	setting_type = "startup",
-	default_value = 97,
-	minimum_value = 1,
-	maximum_value = 100,
-	order = "c4"
-}, {
-	type = "int-setting",
-	name = "legendary_science_pack_drain",
-	setting_type = "startup",
-	default_value = 95,
-	minimum_value = 1,
-	maximum_value = 100,
-	order = "d4"
-}, {
 	type = "double-setting",
 	name = "uncommon_next_probability",
 	setting_type = "startup",
@@ -158,5 +126,43 @@ data:extend({{
 	name = "unlink_quality_from_speed",
 	setting_type = "startup",
 	default_value = false,
+	order = "f7"
+}, {
+	type = "bool-setting",
+	name = "lab_uses_quality_drain_modifier",
+	setting_type = "startup",
+	default_value = false,
 	order = "g1"
+}, {
+	type = "int-setting",
+	name = "uncommon_science_pack_drain",
+	setting_type = "startup",
+	default_value = 99,
+	minimum_value = 1,
+	maximum_value = 100,
+	order = "g2"
+}, {
+	type = "int-setting",
+	name = "rare_science_pack_drain",
+	setting_type = "startup",
+	default_value = 98,
+	minimum_value = 1,
+	maximum_value = 100,
+	order = "g3"
+}, {
+	type = "int-setting",
+	name = "epic_science_pack_drain",
+	setting_type = "startup",
+	default_value = 97,
+	minimum_value = 1,
+	maximum_value = 100,
+	order = "g4"
+}, {
+	type = "int-setting",
+	name = "legendary_science_pack_drain",
+	setting_type = "startup",
+	default_value = 95,
+	minimum_value = 1,
+	maximum_value = 100,
+	order = "g5"
 }})

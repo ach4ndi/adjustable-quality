@@ -67,3 +67,13 @@ legendary.level = settings.startup["legendary_level"].value
 legendary.beacon_power_usage_multiplier = 1 / beacon_divisor
 legendary.mining_drill_resource_drain_multiplier = 1 / mining_divisor
 legendary.science_pack_drain_multiplier = settings.startup["legendary_science_pack_drain"].value / 100
+
+lab_uses_drain = settings.startup["lab_uses_quality_drain_modifier"].value
+local lab = data.raw["lab"]["lab"]
+if lab then
+	lab.uses_quality_drain_modifier = lab_uses_drain
+end
+local biolab = data.raw["lab"]["biolab"]
+if biolab then
+	biolab.uses_quality_drain_modifier = lab_uses_drain
+end
