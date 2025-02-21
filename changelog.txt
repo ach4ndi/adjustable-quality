@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.3
+Date: 02. 20. 2025
+  Changes:
+    - Add option for normal next_probability
+    - Add option for normal level for completeness
+    - Clarify tooltips for next_probability to fix misinformation.
+  Notes:
+    - next_probability changes how often quality modules upgrade one tier to the next.
+    - 0.1 keeps the default probability, 0.05 halves it, 0.2 doubles it.
+    - with this understood now, I have included normal adjustments.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.2
 Date: 02. 17. 2025
   Changes:

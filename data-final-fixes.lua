@@ -41,6 +41,10 @@ for _, mod in pairs(data.raw.module) do
 	modifyModule(mod)
 end
 
+local normal = data.raw.quality.normal
+normal.level = settings.startup["normal_level"].value
+normal.next_probability = settings.startup["normal_next_probability"].value
+
 local uncommon = data.raw.quality.uncommon
 uncommon.level = settings.startup["uncommon_level"].value
 uncommon.beacon_power_usage_multiplier = round((5 / 6) * beacon_divisor) / beacon_divisor
