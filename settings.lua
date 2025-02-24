@@ -181,4 +181,98 @@ data:extend({{
 	minimum_value = 1,
 	maximum_value = 100,
 	order = "h5"
+}, {
+	type = "bool-setting",
+	name = "quality_affects_inventory_size_cargo_wagon",
+	setting_type = "startup",
+	default_value = false,
+	order = "i1"
+}, {
+	type = "bool-setting",
+	name = "quality_affects_inventory_size_container",
+	setting_type = "startup",
+	default_value = true,
+	order = "i2"
+}, {
+	type = "bool-setting",
+	name = "quality_affects_capacity_fluid_wagon",
+	setting_type = "startup",
+	default_value = false,
+	order = "i3"
+}, {
+	type = "bool-setting",
+	name = "charging_station_count_affected_by_quality_roboport_equipment",
+	setting_type = "startup",
+	default_value = false,
+	order = "i4"
+}, {
+	type = "bool-setting",
+	name = "charging_station_count_affected_by_quality_roboport",
+	setting_type = "startup",
+	default_value = false,
+	order = "i5"
+}, {
+	type = "double-setting",
+	name = "fork_chance_increase_per_quality_level_chain_active_trigger",
+	setting_type = "startup",
+	default_value = 0.1,
+	minimum_value = 0,
+	maximum_value = 1,
+	order = "j1"
+}, {
+	type = "double-setting",
+	name = "distribution_effectivity_bonus_per_quality_level_beacon",
+	setting_type = "startup",
+	default_value = 0,
+	minimum_value = 0,
+	maximum_value = 10,
+	order = "j2"
+}, {
+	type = "int-setting",
+	name = "arm_inventory_size_quality_increase_asteroid_collector",
+	setting_type = "startup",
+	default_value = 0,
+	minimum_value = 0,
+	maximum_value = 10,
+	order = "j3"
+}, {
+	type = "int-setting",
+	name = "inventory_size_quality_increase_asteroid_collector",
+	setting_type = "startup",
+	default_value = 5,
+	minimum_value = 0,
+	maximum_value = 20,
+	order = "j4"
+}, {
+	type = "double-setting",
+	name = "energy_usage_quality_scaling_asteroid_collector",
+	setting_type = "startup",
+	default_value = 0.1,
+	minimum_value = 0,
+	maximum_value = 1,
+	order = "j5"
+}, {
+	type = "int-setting",
+	name = "arm_count_quality_scaling_asteroid_collector",
+	setting_type = "startup",
+	default_value = 1,
+	minimum_value = 0,
+	maximum_value = 10,
+	order = "j6"
+}, {
+	type = "double-setting",
+	name = "arm_speed_quality_scaling_asteroid_collector",
+	setting_type = "startup",
+	default_value = 0.1,
+	minimum_value = 0,
+	maximum_value = 1,
+	order = "j7"
+}, {
+	type = "double-setting",
+	name = "arm_angular_speed_cap_quality_scaling_asteroid_collector",
+	setting_type = "startup",
+	default_value = 0.1,
+	minimum_value = 0,
+	maximum_value = 1,
+	order = "j8"
 }})

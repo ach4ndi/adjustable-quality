@@ -1,4 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.4
+Date: 02. 23. 2025
+  Notes:
+    - Adding settings for more prototypes with optional quality scaling.
+    - As always default values are preserved, adjust as you see fit. 
+  Changes:
+    - Cargo Wagon & Container Prototypes - BOOL - quality_affects_inventory_size
+    - Fluid Wagon - BOOL - quality_affects_capacity
+    - Roboport & Roboport Equipment - BOOL - charging_station_count_affected_by_quality
+    - Chain Active Trigger - DOUBLE - fork_chance_increase_per_quality_level
+    - Beacon - DOUBLE - distribution_effectivity_bonus_per_quality_level
+    - Asteroid Collector - 6 properties
+      - INT - arm_inventory_size_quality_increase
+      - INT - inventory_size_quality_increase
+      - DOUBLE - energy_usage_quality_scaling
+      - INT - arm_count_quality_scaling
+      - DOUBLE - arm_speed_quality_scaling
+      - DOUBLE - arm_angular_speed_cap_quality_scaling
+---------------------------------------------------------------------------------------------------
 Version: 2.0.3
 Date: 02. 20. 2025
   Changes:

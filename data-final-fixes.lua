@@ -72,12 +72,50 @@ legendary.beacon_power_usage_multiplier = 1 / beacon_divisor
 legendary.mining_drill_resource_drain_multiplier = 1 / mining_divisor
 legendary.science_pack_drain_multiplier = settings.startup["legendary_science_pack_drain"].value / 100
 
-lab_uses_drain = settings.startup["lab_uses_quality_drain_modifier"].value
-local lab = data.raw["lab"]["lab"]
-if lab then
-	lab.uses_quality_drain_modifier = lab_uses_drain
+for _, obj in pairs(data.raw["lab"]) do
+	obj.uses_quality_drain_modifier = settings.startup["lab_uses_quality_drain_modifier"].value
 end
-local biolab = data.raw["lab"]["biolab"]
-if biolab then
-	biolab.uses_quality_drain_modifier = lab_uses_drain
+
+for _, obj in pairs(data.raw["cargo-wagon"]) do
+	obj.quality_affects_inventory_size = settings.startup["quality_affects_inventory_size_cargo_wagon"].value
 end
+
+for _, obj in pairs(data.raw["container"]) do
+	obj.quality_affects_inventory_size = settings.startup["quality_affects_inventory_size_container"].value
+end
+
+for _, obj in pairs(data.raw["fluid-wagon"]) do
+	obj.quality_affects_capacity = settings.startup["quality_affects_capacity_fluid_wagon"].value
+end
+
+for _, obj in pairs(data.raw["roboport-equipment"]) do
+	obj.charging_station_count_affected_by_quality =
+		settings.startup["charging_station_count_affected_by_quality_roboport_equipment"].value
+end
+
+for _, obj in pairs(data.raw["roboport"]) do
+	obj.charging_station_count_affected_by_quality =
+		settings.startup["charging_station_count_affected_by_quality_roboport"].value
+end
+
+for _, obj in pairs(data.raw["chain-active-trigger"]) do
+	obj.fork_chance_increase_per_quality_level =
+		settings.startup["fork_chance_increase_per_quality_level_chain_active_trigger"].value
+end
+
+for _, obj in pairs(data.raw["beacon"]) do
+	obj.distribution_effectivity_bonus_per_quality_level =
+		settings.startup["distribution_effectivity_bonus_per_quality_level_beacon"].value
+end
+
+for _, obj in pairs(data.raw["asteroid-collector"]) do
+	obj.arm_inventory_size_quality_increase =
+		settings.startup["arm_inventory_size_quality_increase_asteroid_collector"].value
+	obj.inventory_size_quality_increase = settings.startup["inventory_size_quality_increase_asteroid_collector"].value
+	obj.energy_usage_quality_scaling = settings.startup["energy_usage_quality_scaling_asteroid_collector"].value
+	obj.arm_count_quality_scaling = settings.startup["arm_count_quality_scaling_asteroid_collector"].value
+	obj.arm_speed_quality_scaling = settings.startup["arm_speed_quality_scaling_asteroid_collector"].value
+	obj.arm_angular_speed_cap_quality_scaling =
+		settings.startup["arm_angular_speed_cap_quality_scaling_asteroid_collector"].value
+end
+
