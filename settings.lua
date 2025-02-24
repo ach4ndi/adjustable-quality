@@ -50,6 +50,14 @@ data:extend({{
 	maximum_value = 12,
 	order = "f1"
 }, {
+	type = "double-setting",
+	name = "distribution_effectivity_bonus_per_quality_level_beacon",
+	setting_type = "startup",
+	default_value = 0,
+	minimum_value = 0,
+	maximum_value = 1,
+	order = "f1a"
+}, {
 	type = "int-setting",
 	name = "mining_drill_resource_drain_divisor",
 	setting_type = "startup",
@@ -219,14 +227,6 @@ data:extend({{
 	minimum_value = 0,
 	maximum_value = 1,
 	order = "j1"
-}, {
-	type = "double-setting",
-	name = "distribution_effectivity_bonus_per_quality_level_beacon",
-	setting_type = "startup",
-	default_value = 0,
-	minimum_value = 0,
-	maximum_value = 10,
-	order = "j2"
 }, {
 	type = "int-setting",
 	name = "arm_inventory_size_quality_increase_asteroid_collector",
