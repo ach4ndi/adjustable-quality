@@ -1,4 +1,47 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.5
+Date: 07. 16. 2025
+  Notes:
+    - Added new prototype adjustment points introduced in game version 2.0.56
+    - Improved the look of the settings menu, now using item icons to make it cleaner
+    - Massive improvement to the ganularity of adjustment now that we can change default multiplier
+    - Cleaned up some of the variable names for settings, some have been changed and will be reset to default.
+    - Use the setting tooltips in order to get a better understanding of which multipliers are being used to scale.
+  Changes:
+    - Default multiplier
+    - Tool durability multiplier
+    - Lab module slots bonus
+    - Lab module slots toggle
+    - Lab research speed multiplier
+    - Beacon supply area distance bonus
+    - Beacon supply area toggle
+    - Beacon module slots bonus
+    - Beacon module slots toggle
+    - Mining drill module slots bonus
+    - Mining drill module toggle
+    - Mining drill radius bonus
+    - Mining drill radius toggle
+    - Crafting machine module slots bonus
+    - Crafting machine module slots toggle
+    - Crafting machine energy usage multiplier
+    - Crafting machine energy usage toggle
+    - Crafting machine speed multiplier
+    - Inventory size multiplier
+    - Fluid wagon capacity multiplier
+    - Inserter speed multiplier
+    - Equipment grid width/height multipliers
+    - Asteroid collector radius bonus
+    - Logistic cell charging energy multiplier
+    - Logistic cell charging station multiplier
+    - Flying robot max energy multiplier
+    - Accumulator capacity multiplier
+    - Electric pole wire reach bonus
+    - Electric pole supply area bonus
+    - Range multiplier
+  Bugfixes:
+    - Fixed calculations for resource drain and power usage so they can now be properly adjusted.
+
+---------------------------------------------------------------------------------------------------
 Version: 2.0.4
 Date: 02. 23. 2025
   Notes:
