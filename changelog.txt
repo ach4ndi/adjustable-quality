@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.5
+Version: 2.0.51
 Date: 07. 17. 2025
   Notes:
     - Adding the feature flag quality_required, this is to be flagged as a Space Age Mod
