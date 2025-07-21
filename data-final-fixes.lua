@@ -169,7 +169,7 @@ end
 
 for _, obj in pairs(data.raw["assembling-machine"]) do
 	obj.quality_affects_energy_usage = setting("quality_affects_energy_usage_crafting")
-	if #obj.allowed_effects > 0 and obj.module_slots ~= nil and obj.module_slots > 0 then
+	if obj.allowed_effects ~= nil and #obj.allowed_effects > 0 and obj.module_slots ~= nil and obj.module_slots > 0 then
 		obj.quality_affects_module_slots = setting("quality_affects_module_slots_crafting")
 	end
 end
