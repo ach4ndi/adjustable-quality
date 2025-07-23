@@ -93,7 +93,7 @@ for i, obj in pairs(data.raw["quality"]) do
 	end
 	obj.default_multiplier = 1 + setting("default_multiplier") * obj.level
 	obj.tool_durability_multiplier = 1 + setting("tool_durability_multiplier") * obj.level
-	obj.beacon_supply_area_distance_bonus = setting("beacon_supply_area_distance_bonus") * obj.level
+	obj.beacon_supply_area_distance_bonus = clamp(0, 64, setting("beacon_supply_area_distance_bonus") * obj.level)
 	obj.beacon_module_slots_bonus = setting("beacon_module_slots_bonus") * obj.level
 	obj.lab_module_slots_bonus = setting("lab_module_slots_bonus") * obj.level
 	obj.crafting_machine_module_slots_bonus = setting("crafting_machine_module_slots_bonus") * obj.level
