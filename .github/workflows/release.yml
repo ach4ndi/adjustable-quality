@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Optional version override (e.g. 1.2.3)'
+        required: false
+        type: string
 
 jobs:
   release:
