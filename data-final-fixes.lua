@@ -101,8 +101,8 @@ for i, obj in pairs(data.raw["quality"]) do
 	obj.mining_drill_mining_radius_bonus = setting("mining_drill_mining_radius_bonus") * obj.level
 	obj.equipment_grid_width_bonus = setting("equipment_grid_width_bonus") * obj.level
 	obj.equipment_grid_height_bonus = setting("equipment_grid_height_bonus") * obj.level
-	if mods["space-age"] then	
-	obj.asteroid_collector_collection_radius_bonus = setting("asteroid_collector_collection_radius_bonus") * obj.level
+	if mods["space-age"] then
+		obj.asteroid_collector_collection_radius_bonus = setting("asteroid_collector_collection_radius_bonus") * obj.level
 	end
 	obj.logistic_cell_charging_station_count_bonus = setting("logistic_cell_charging_station_count_bonus") * obj.level
 	obj.flying_robot_max_energy_multiplier = 1 + setting("flying_robot_max_energy_multiplier") * obj.level
@@ -150,7 +150,6 @@ if data.raw["chain-active-trigger"] then
 		obj.fork_chance_increase_per_quality_level = setting("fork_chance_increase_per_quality_level_chain_active_trigger")
 	end
 end
-	
 
 for _, obj in pairs(data.raw["beacon"]) do
 	obj.distribution_effectivity_bonus_per_quality_level = setting("distribution_effectivity_bonus_per_quality_level")
@@ -171,7 +170,9 @@ end
 
 for _, obj in pairs(data.raw["mining-drill"]) do
 	obj.quality_affects_mining_radius = setting("quality_affects_mining_radius")
-	obj.quality_affects_module_slots = setting("quality_affects_module_slots_mining")
+	if obj.allowed_effects ~= nil and #obj.allowed_effects > 0 and obj.module_slots ~= nil and obj.module_slots > 0 then
+		obj.quality_affects_module_slots = setting("quality_affects_module_slots_mining")
+	end
 end
 
 for _, obj in pairs(data.raw["assembling-machine"]) do
