@@ -101,7 +101,9 @@ for i, obj in pairs(data.raw["quality"]) do
 	obj.mining_drill_mining_radius_bonus = setting("mining_drill_mining_radius_bonus") * obj.level
 	obj.equipment_grid_width_bonus = setting("equipment_grid_width_bonus") * obj.level
 	obj.equipment_grid_height_bonus = setting("equipment_grid_height_bonus") * obj.level
+	if mods["space-exploration"] then	
 	obj.asteroid_collector_collection_radius_bonus = setting("asteroid_collector_collection_radius_bonus") * obj.level
+	end
 	obj.logistic_cell_charging_station_count_bonus = setting("logistic_cell_charging_station_count_bonus") * obj.level
 	obj.flying_robot_max_energy_multiplier = 1 + setting("flying_robot_max_energy_multiplier") * obj.level
 	obj.accumulator_capacity_multiplier = 1 + setting("accumulator_capacity_multiplier") * obj.level
