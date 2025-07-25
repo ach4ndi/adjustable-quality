@@ -447,7 +447,7 @@ data:extend({{
 	order = "m1"
 }})
 
-if mods["space-exploration"] then
+if mods["space-age"] then
 data:extend({{
 	type = "double-setting",
 	name = "fork_chance_increase_per_quality_level_chain_active_trigger",
