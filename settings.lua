@@ -439,20 +439,23 @@ data:extend({{
 	order = "l3"
 }, {
 	type = "double-setting",
-	name = "fork_chance_increase_per_quality_level_chain_active_trigger",
-	setting_type = "startup",
-	default_value = 0.1,
-	minimum_value = 0,
-	maximum_value = 1,
-	order = "m0"
-}, {
-	type = "double-setting",
 	name = "range_multiplier",
 	setting_type = "startup",
 	default_value = 0.1,
 	minimum_value = 0.01,
 	maximum_value = 2,
 	order = "m1"
+}})
+
+if mods["space-exploration"] then
+data:extend({{
+	type = "double-setting",
+	name = "fork_chance_increase_per_quality_level_chain_active_trigger",
+	setting_type = "startup",
+	default_value = 0.1,
+	minimum_value = 0,
+	maximum_value = 1,
+	order = "m0"
 }, {
 	type = "int-setting",
 	name = "asteroid_collector_collection_radius_bonus",
@@ -510,3 +513,4 @@ data:extend({{
 	maximum_value = 1,
 	order = "n6"
 }})
+end
