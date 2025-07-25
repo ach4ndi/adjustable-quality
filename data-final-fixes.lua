@@ -143,9 +143,12 @@ for _, obj in pairs(data.raw["roboport"]) do
 	obj.charging_station_count_affected_by_quality = setting("charging_station_count_affected_by_quality")
 end
 
-for _, obj in pairs(data.raw["chain-active-trigger"]) do
-	obj.fork_chance_increase_per_quality_level = setting("fork_chance_increase_per_quality_level_chain_active_trigger")
+if data.raw["chain-active-trigger"] then
+	for _, obj in pairs(data.raw["chain-active-trigger"]) do
+		obj.fork_chance_increase_per_quality_level = setting("fork_chance_increase_per_quality_level_chain_active_trigger")
+	end
 end
+	
 
 for _, obj in pairs(data.raw["beacon"]) do
 	obj.distribution_effectivity_bonus_per_quality_level = setting("distribution_effectivity_bonus_per_quality_level")
@@ -153,13 +156,15 @@ for _, obj in pairs(data.raw["beacon"]) do
 	obj.quality_affects_supply_area_distance = setting("quality_affects_supply_area_distance_beacon")
 end
 
-for _, obj in pairs(data.raw["asteroid-collector"]) do
-	obj.arm_inventory_size_quality_increase = setting("arm_inventory_size_quality_increase_collector")
-	obj.inventory_size_quality_increase = setting("inventory_size_quality_increase_collector")
-	obj.energy_usage_quality_scaling = setting("energy_usage_quality_scaling_collector")
-	obj.arm_count_quality_scaling = setting("arm_count_quality_scaling_collector")
-	obj.arm_speed_quality_scaling = setting("arm_speed_quality_scaling_collector")
-	obj.arm_angular_speed_cap_quality_scaling = setting("arm_angular_speed_cap_quality_scaling_collector")
+if data.raw["asteroid-collector"] then
+	for _, obj in pairs(data.raw["asteroid-collector"]) do
+		obj.arm_inventory_size_quality_increase = setting("arm_inventory_size_quality_increase_collector")
+		obj.inventory_size_quality_increase = setting("inventory_size_quality_increase_collector")
+		obj.energy_usage_quality_scaling = setting("energy_usage_quality_scaling_collector")
+		obj.arm_count_quality_scaling = setting("arm_count_quality_scaling_collector")
+		obj.arm_speed_quality_scaling = setting("arm_speed_quality_scaling_collector")
+		obj.arm_angular_speed_cap_quality_scaling = setting("arm_angular_speed_cap_quality_scaling_collector")
+	end
 end
 
 for _, obj in pairs(data.raw["mining-drill"]) do
