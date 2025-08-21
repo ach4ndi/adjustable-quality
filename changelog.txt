@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.55
+Date: 08. 20. 2025
+  Changes:
+    - beacon_power_usage_divisor changed to beacon_power_usage_reduction
+    - mining_drill_resource_drain_divisor changed to mining_drill_resource_drain_reduction
+    - crafting_machine_energy_usage_divisor changed to crafting_machine_energy_usage_reduction
+    - These new options allow for modded qualities to be affected.
+    - It should be easier to make more fine tuned adjustments to the end result.
+  Bugfixes:
+    - Fix Mining drill not gaining additional module slots when option is enabled.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.54
 Date: 07. 25. 2025
   Bugfixes:
