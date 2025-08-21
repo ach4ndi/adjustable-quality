@@ -2,13 +2,6 @@ local function setting(name)
 	return settings.startup[name].value
 end
 
-local beacon_divisor = setting("beacon_power_usage_divisor")
-local mining_divisor = setting("mining_drill_resource_drain_divisor")
-local crafting_divisor = setting("crafting_machine_energy_usage_divisor")
-local unlink = setting("unlink_quality_from_speed")
-local max_level = math.max(setting("normal_level"), setting("uncommon_level"), setting("rare_level"),
-                           setting("epic_level"), setting("legendary_level"))
-
 local function clamp(min, max, value)
 	if value > max then
 		return max
@@ -28,6 +21,7 @@ local quality_mapping = {
 	[-0.25] = setting("speed_module_3")
 }
 
+local unlink = setting("unlink_quality_from_speed")
 local function modifyModule(mod)
 	local effects = mod.effect
 	if effects.speed and effects.speed > 0 then
@@ -54,43 +48,32 @@ for _, mod in pairs(data.raw.module) do
 	modifyModule(mod)
 end
 
+local beacon_reduction = setting("beacon_power_usage_reduction")
+local mining_drill_reduction = setting("mining_drill_resource_drain_reduction")
+local crafting_machine_reduction = setting("crafting_machine_energy_usage_reduction")
 for i, obj in pairs(data.raw["quality"]) do
 	if i == "normal" then
 		obj.level = setting("normal_level")
 		obj.next_probability = setting("normal_next_probability")
-		if obj.level > 0 then
-			obj.beacon_power_usage_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / beacon_divisor)
-			obj.mining_drill_resource_drain_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / mining_divisor)
-			obj.crafting_machine_energy_usage_multiplier = clamp(0.01, 1, (max_level + 1 - obj.level) / crafting_divisor)
-		end
 	elseif i == "uncommon" then
 		obj.level = setting("uncommon_level")
-		obj.beacon_power_usage_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / beacon_divisor)
-		obj.mining_drill_resource_drain_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / mining_divisor)
-		obj.crafting_machine_energy_usage_multiplier = clamp(0.01, 1, (max_level + 1 - obj.level) / crafting_divisor)
 		obj.science_pack_drain_multiplier = setting("uncommon_science_pack_drain") / 100
 		obj.next_probability = setting("uncommon_next_probability")
 	elseif i == "rare" then
 		obj.level = setting("rare_level")
-		obj.beacon_power_usage_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / beacon_divisor)
-		obj.mining_drill_resource_drain_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / mining_divisor)
-		obj.crafting_machine_energy_usage_multiplier = clamp(0.01, 1, (max_level + 1 - obj.level) / crafting_divisor)
 		obj.science_pack_drain_multiplier = setting("rare_science_pack_drain") / 100
 		obj.next_probability = setting("rare_next_probability")
 	elseif i == "epic" then
 		obj.level = setting("epic_level")
-		obj.beacon_power_usage_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / beacon_divisor)
-		obj.mining_drill_resource_drain_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / mining_divisor)
-		obj.crafting_machine_energy_usage_multiplier = clamp(0.01, 1, (max_level + 1 - obj.level) / crafting_divisor)
 		obj.science_pack_drain_multiplier = setting("epic_science_pack_drain") / 100
 		obj.next_probability = setting("epic_next_probability")
 	elseif i == "legendary" then
 		obj.level = setting("legendary_level")
-		obj.beacon_power_usage_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / beacon_divisor)
-		obj.mining_drill_resource_drain_multiplier = clamp(0, 1, (max_level + 1 - obj.level) / mining_divisor)
-		obj.crafting_machine_energy_usage_multiplier = clamp(0.01, 1, (max_level + 1 - obj.level) / crafting_divisor)
 		obj.science_pack_drain_multiplier = setting("legendary_science_pack_drain") / 100
 	end
+	obj.beacon_power_usage_multiplier = clamp(0.01, 1, 1 - beacon_reduction * obj.level)
+	obj.mining_drill_resource_drain_multiplier = clamp(0.01, 1, 1 - mining_drill_reduction * obj.level)
+	obj.crafting_machine_energy_usage_multiplier = clamp(0.01, 1, 1 - crafting_machine_reduction * obj.level)
 	obj.default_multiplier = 1 + setting("default_multiplier") * obj.level
 	obj.tool_durability_multiplier = 1 + setting("tool_durability_multiplier") * obj.level
 	obj.beacon_supply_area_distance_bonus = clamp(0, 64, setting("beacon_supply_area_distance_bonus") * obj.level)

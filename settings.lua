@@ -151,11 +151,11 @@ data:extend({{
 	order = "d0"
 }, {
 	type = "double-setting",
-	name = "crafting_machine_energy_usage_divisor",
+	name = "crafting_machine_energy_usage_reduction",
 	setting_type = "startup",
-	default_value = 6,
-	minimum_value = 1,
-	maximum_value = 100,
+	default_value = 1 / 6,
+	minimum_value = 0,
+	maximum_value = 1,
 	order = "d1"
 }, {
 	type = "bool-setting",
@@ -248,20 +248,20 @@ data:extend({{
 	maximum_value = 1,
 	order = "g4"
 }, {
-	type = "int-setting",
-	name = "beacon_power_usage_divisor",
+	type = "double-setting",
+	name = "beacon_power_usage_reduction",
 	setting_type = "startup",
-	default_value = 6,
-	minimum_value = 1,
-	maximum_value = 100,
+	default_value = 1 / 6,
+	minimum_value = 0,
+	maximum_value = 1,
 	order = "g5"
 }, {
-	type = "int-setting",
-	name = "mining_drill_resource_drain_divisor",
+	type = "double-setting",
+	name = "mining_drill_resource_drain_reduction",
 	setting_type = "startup",
-	default_value = 6,
-	minimum_value = 1,
-	maximum_value = 100,
+	default_value = 1 / 6,
+	minimum_value = 0,
+	maximum_value = 1,
 	order = "h0"
 }, {
 	type = "bool-setting",
@@ -448,69 +448,69 @@ data:extend({{
 }})
 
 if mods["space-age"] then
-data:extend({{
-	type = "double-setting",
-	name = "fork_chance_increase_per_quality_level_chain_active_trigger",
-	setting_type = "startup",
-	default_value = 0.1,
-	minimum_value = 0,
-	maximum_value = 1,
-	order = "m0"
-}, {
-	type = "int-setting",
-	name = "asteroid_collector_collection_radius_bonus",
-	setting_type = "startup",
-	default_value = 1,
-	minimum_value = 0,
-	maximum_value = 10,
-	order = "n0"
-}, {
-	type = "int-setting",
-	name = "inventory_size_quality_increase_collector",
-	setting_type = "startup",
-	default_value = 5,
-	minimum_value = 0,
-	maximum_value = 20,
-	order = "n1"
-}, {
-	type = "int-setting",
-	name = "arm_inventory_size_quality_increase_collector",
-	setting_type = "startup",
-	default_value = 0,
-	minimum_value = 0,
-	maximum_value = 10,
-	order = "n2"
-}, {
-	type = "double-setting",
-	name = "energy_usage_quality_scaling_collector",
-	setting_type = "startup",
-	default_value = 0.1,
-	minimum_value = 0,
-	maximum_value = 1,
-	order = "n3"
-}, {
-	type = "int-setting",
-	name = "arm_count_quality_scaling_collector",
-	setting_type = "startup",
-	default_value = 1,
-	minimum_value = 0,
-	maximum_value = 10,
-	order = "n4"
-}, {
-	type = "double-setting",
-	name = "arm_speed_quality_scaling_collector",
-	setting_type = "startup",
-	default_value = 0.1,
-	minimum_value = 0,
-	maximum_value = 1,
-	order = "n5"
-}, {
-	type = "double-setting",
-	name = "arm_angular_speed_cap_quality_scaling_collector",
-	setting_type = "startup",
-	default_value = 0.1,
-	minimum_value = 0,
-	maximum_value = 1,
-	order = "n6"
-}})
+	data:extend({{
+		type = "double-setting",
+		name = "fork_chance_increase_per_quality_level_chain_active_trigger",
+		setting_type = "startup",
+		default_value = 0.1,
+		minimum_value = 0,
+		maximum_value = 1,
+		order = "m0"
+	}, {
+		type = "int-setting",
+		name = "asteroid_collector_collection_radius_bonus",
+		setting_type = "startup",
+		default_value = 1,
+		minimum_value = 0,
+		maximum_value = 10,
+		order = "n0"
+	}, {
+		type = "int-setting",
+		name = "inventory_size_quality_increase_collector",
+		setting_type = "startup",
+		default_value = 5,
+		minimum_value = 0,
+		maximum_value = 20,
+		order = "n1"
+	}, {
+		type = "int-setting",
+		name = "arm_inventory_size_quality_increase_collector",
+		setting_type = "startup",
+		default_value = 0,
+		minimum_value = 0,
+		maximum_value = 10,
+		order = "n2"
+	}, {
+		type = "double-setting",
+		name = "energy_usage_quality_scaling_collector",
+		setting_type = "startup",
+		default_value = 0.1,
+		minimum_value = 0,
+		maximum_value = 1,
+		order = "n3"
+	}, {
+		type = "int-setting",
+		name = "arm_count_quality_scaling_collector",
+		setting_type = "startup",
+		default_value = 1,
+		minimum_value = 0,
+		maximum_value = 10,
+		order = "n4"
+	}, {
+		type = "double-setting",
+		name = "arm_speed_quality_scaling_collector",
+		setting_type = "startup",
+		default_value = 0.1,
+		minimum_value = 0,
+		maximum_value = 1,
+		order = "n5"
+	}, {
+		type = "double-setting",
+		name = "arm_angular_speed_cap_quality_scaling_collector",
+		setting_type = "startup",
+		default_value = 0.1,
+		minimum_value = 0,
+		maximum_value = 1,
+		order = "n6"
+	}})
 end
