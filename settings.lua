@@ -237,15 +237,15 @@ data:extend({{
 	setting_type = "startup",
 	default_value = 1,
 	minimum_value = 0.1,
-	maximum_value = 10,
+	maximum_value = 1,
 	order = "g3"
 }, {
 	type = "double-setting",
 	name = "distribution_effectivity_bonus_per_quality_level",
 	setting_type = "startup",
-	default_value = 0,
+	default_value = 0.2,
 	minimum_value = 0,
-	maximum_value = 1,
+	maximum_value = 10,
 	order = "g4"
 }, {
 	type = "double-setting",
