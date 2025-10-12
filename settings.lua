@@ -95,7 +95,7 @@ data:extend({{
 	setting_type = "startup",
 	default_value = 0.1,
 	minimum_value = 0,
-	maximum_value = 1,
+	maximum_value = 10,
 	order = "c0"
 }, {
 	type = "double-setting",
@@ -103,7 +103,7 @@ data:extend({{
 	setting_type = "startup",
 	default_value = 0.2,
 	minimum_value = 0,
-	maximum_value = 1,
+	maximum_value = 10,
 	order = "c1"
 }, {
 	type = "double-setting",
@@ -111,7 +111,7 @@ data:extend({{
 	setting_type = "startup",
 	default_value = 0.25,
 	minimum_value = 0,
-	maximum_value = 1,
+	maximum_value = 10,
 	order = "c2"
 }, {
 	type = "double-setting",
