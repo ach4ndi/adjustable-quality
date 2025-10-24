@@ -447,7 +447,7 @@ data:extend({{
 	order = "m1"
 }})
 
-if mods["space-age"] then
+if mods["space-age"] or (mods["space-exploration"] and mods["quality-se"]) then
 	data:extend({{
 		type = "double-setting",
 		name = "fork_chance_increase_per_quality_level_chain_active_trigger",
@@ -456,7 +456,11 @@ if mods["space-age"] then
 		minimum_value = 0,
 		maximum_value = 1,
 		order = "m0"
-	}, {
+	}})
+end
+
+if mods["space-age"] then
+	data:extend({{
 		type = "int-setting",
 		name = "asteroid_collector_collection_radius_bonus",
 		setting_type = "startup",
