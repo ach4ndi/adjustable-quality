@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.59
+Date: 10. 31. 2025
+  Changes:
+    - Add maximum quality jump setting to control how many quality tiers can be skipped in a single upgrade.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.58
 Date: 10. 24. 2025
   Changes:

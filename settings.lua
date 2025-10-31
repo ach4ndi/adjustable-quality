@@ -19,6 +19,14 @@ data:extend({{
 	order = "a1"
 }, {
 	type = "int-setting",
+	name = "maximum_quality_jump",
+	setting_type = "startup",
+	default_value = 255,
+	minimum_value = 1,
+	maximum_value = 255,
+	order = "a2"
+}, {
+	type = "int-setting",
 	name = "normal_level",
 	setting_type = "startup",
 	default_value = 0,
