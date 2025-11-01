@@ -42,21 +42,74 @@ for i, obj in pairs(data.raw["quality"]) do
 	if i == "normal" then
 		obj.level = setting("normal_level")
 		obj.next_probability = setting("normal_next_probability")
+		obj.localised_name = {"", setting("normal_level_name")}
 	elseif i == "uncommon" then
 		obj.level = setting("uncommon_level")
 		obj.science_pack_drain_multiplier = setting("uncommon_science_pack_drain") / 100
 		obj.next_probability = setting("uncommon_next_probability")
+		obj.localised_name = {"", setting("uncommon_level_name")}
 	elseif i == "rare" then
 		obj.level = setting("rare_level")
 		obj.science_pack_drain_multiplier = setting("rare_science_pack_drain") / 100
 		obj.next_probability = setting("rare_next_probability")
+		obj.localised_name = {"", setting("rare_level_name")}
 	elseif i == "epic" then
 		obj.level = setting("epic_level")
 		obj.science_pack_drain_multiplier = setting("epic_science_pack_drain") / 100
 		obj.next_probability = setting("epic_next_probability")
+		obj.localised_name = {"", setting("epic_level_name")}
 	elseif i == "legendary" then
 		obj.level = setting("legendary_level")
 		obj.science_pack_drain_multiplier = setting("legendary_science_pack_drain") / 100
+		obj.localised_name = {"", setting("legendary_level_name")}
+		if mods["Additional-Qualities"] or mods["Quality-Plus-Plus"] then obj.next_probability = setting("legendary_next_probability") end
+	elseif mods["Additional-Qualities"] then
+		if i == "mythic" then
+			obj.level = setting("mythic_level")
+			obj.next_probability = setting("mythic_next_probability")
+			obj.localised_name = {"", setting("mythic_level_name")}
+			obj.science_pack_drain_multiplier = setting("mythic_science_pack_drain") / 100
+		elseif i == "relic" then
+			obj.level = setting("relic_level")
+			obj.next_probability = setting("relic_next_probability")
+			obj.localised_name = {"", setting("relic_level_name")}
+			obj.science_pack_drain_multiplier = setting("relic_science_pack_drain") / 100
+		elseif i == "masterwork" then
+			obj.level = setting("masterwork_level")
+			obj.next_probability = setting("masterwork_next_probability")
+			obj.localised_name = {"", setting("masterwork_level_name")}
+			obj.science_pack_drain_multiplier = setting("masterwork_science_pack_drain") / 100
+		elseif i == "eternal" then
+			obj.level = setting("eternal_level")
+			obj.next_probability = setting("eternal_next_probability")
+			obj.localised_name = {"", setting("eternal_level_name")}
+			obj.science_pack_drain_multiplier = setting("eternal_science_pack_drain") / 100
+		elseif i == "transcendent" then
+			obj.level = setting("transcendent_level")
+			obj.localised_name = {"", setting("transcendent_level_name")}
+			obj.science_pack_drain_multiplier = setting("transcendent_science_pack_drain") / 100
+		end
+	elseif mods["Quality-Plus-Plus"] then
+		if i == "mythical" then
+			obj.level = setting("mythical_level")
+			obj.next_probability = setting("mythical_next_probability")
+			obj.localised_name = {"", setting("mythical_level_name")}
+			obj.science_pack_drain_multiplier = setting("mythical_science_pack_drain") / 100
+		elseif i == "masterwork" then
+			obj.level = setting("masterwork_level")
+			obj.next_probability = setting("masterwork_next_probability")
+			obj.localised_name = {"", setting("masterwork_level_name")}
+			obj.science_pack_drain_multiplier = setting("masterwork_science_pack_drain") / 100
+		elseif i == "wondrous" then
+			obj.level = setting("wondrous_level")
+			obj.next_probability = setting("wondrous_next_probability")
+			obj.localised_name = {"", setting("wondrous_level_name")}
+			obj.science_pack_drain_multiplier = setting("wondrous_science_pack_drain") / 100
+		elseif i == "artifactual" then
+			obj.level = setting("artifactual_level")
+			obj.localised_name = {"", setting("artifactual_level_name")}
+			obj.science_pack_drain_multiplier = setting("artifactual_science_pack_drain") / 100
+		end
 	end
 	obj.beacon_power_usage_multiplier = clamp(0.01, 1, 1 - setting("beacon_power_usage_reduction") * obj.level)
 	obj.mining_drill_resource_drain_multiplier = clamp(0.01, 1, 1 - setting("mining_drill_resource_drain_reduction") * obj.level)
@@ -131,6 +184,11 @@ end
 for _, obj in pairs(data.raw["assembling-machine"]) do
 	obj.quality_affects_energy_usage = setting("quality_affects_energy_usage_crafting")
 	if obj.module_slots ~= nil and obj.module_slots > 0 then obj.quality_affects_module_slots = setting("quality_affects_module_slots_crafting") end
+end
+
+for _, obj in pairs(data.raw["furnace"]) do
+	obj.quality_affects_energy_usage = setting("quality_affects_energy_usage_furnace")
+	if obj.module_slots ~= nil and obj.module_slots > 0 then obj.quality_affects_module_slots = setting("quality_affects_module_slots_furnace") end
 end
 
 data.raw["utility-constants"]["default"].maximum_quality_jump = setting("maximum_quality_jump")

@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.60
+Date: 11. 1. 2025
+  Changes:
+    - Add adjustment point for all quality level names.
+    - Add options for enabling furnace module slot and energy use scaling with quality.
+    - Add support for Additional Quality mod. This gives adjustment points for the 5 additional quality levels.
+    - No current plan to support the optional quality levels beyond transcendent.
+    - Add support for Quality Plus Plus. This gives adjustment points for the 4 additional quality levels.
+    - Both of these mods use the generic scaling values for all settings other than name, level, lab science pack drain, and next probability.
+    - Legendary gains an adjustment point for next probability if either of these mods are loaded.
+    - Incremented base game dependency to 2.0.69
+---------------------------------------------------------------------------------------------------
 Version: 2.0.59
 Date: 10. 31. 2025
   Changes:
