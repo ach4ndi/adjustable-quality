@@ -38,9 +38,6 @@ end
 
 for _, mod in pairs(data.raw.module) do modifyModule(mod) end
 
-local beacon_reduction = setting("beacon_power_usage_reduction")
-local mining_drill_reduction = setting("mining_drill_resource_drain_reduction")
-local crafting_machine_reduction = setting("crafting_machine_energy_usage_reduction")
 for i, obj in pairs(data.raw["quality"]) do
 	if i == "normal" then
 		obj.level = setting("normal_level")
@@ -61,9 +58,9 @@ for i, obj in pairs(data.raw["quality"]) do
 		obj.level = setting("legendary_level")
 		obj.science_pack_drain_multiplier = setting("legendary_science_pack_drain") / 100
 	end
-	obj.beacon_power_usage_multiplier = clamp(0.01, 1, 1 - beacon_reduction * obj.level)
-	obj.mining_drill_resource_drain_multiplier = clamp(0.01, 1, 1 - mining_drill_reduction * obj.level)
-	obj.crafting_machine_energy_usage_multiplier = clamp(0.01, 1, 1 - crafting_machine_reduction * obj.level)
+	obj.beacon_power_usage_multiplier = clamp(0.01, 1, 1 - setting("beacon_power_usage_reduction") * obj.level)
+	obj.mining_drill_resource_drain_multiplier = clamp(0.01, 1, 1 - setting("mining_drill_resource_drain_reduction") * obj.level)
+	obj.crafting_machine_energy_usage_multiplier = clamp(0.01, 1, 1 - setting("crafting_machine_energy_usage_reduction") * obj.level)
 	obj.default_multiplier = 1 + setting("default_multiplier") * obj.level
 	obj.tool_durability_multiplier = 1 + setting("tool_durability_multiplier") * obj.level
 	obj.beacon_supply_area_distance_bonus = clamp(0, 64, setting("beacon_supply_area_distance_bonus") * obj.level)
