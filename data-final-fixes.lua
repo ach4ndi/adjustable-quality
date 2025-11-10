@@ -23,14 +23,14 @@ local unlink = setting("unlink_quality_from_speed")
 local function modifyModule(mod)
 	local effects = mod.effect
 	if effects.speed and effects.speed > 0 then
-		if unlink then
+		if unlink and effects.quality < 0 then
 			effects.quality = 0
-		else
-			if quality_mapping[effects.quality] then effects.quality = quality_mapping[effects.quality] end
+		elseif quality_mapping[effects.quality] then
+			effects.quality = quality_mapping[effects.quality] end
 		end
 	end
 	if effects.quality and effects.quality > 0 then
-		if unlink then effects.speed = 0 end
+		if unlink and effects.speed < 0 then effects.speed = 0 end
 		if quality_mapping[effects.quality] then effects.quality = quality_mapping[effects.quality] end
 	end
 	mod.effect = effects
