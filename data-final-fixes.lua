@@ -26,7 +26,7 @@ local function modifyModule(mod)
 		if unlink and effects.quality < 0 then
 			effects.quality = 0
 		elseif quality_mapping[effects.quality] then
-			effects.quality = quality_mapping[effects.quality] end
+			effects.quality = quality_mapping[effects.quality]
 		end
 	end
 	if effects.quality and effects.quality > 0 then
