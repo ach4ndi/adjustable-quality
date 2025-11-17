@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.64
+Date: 11. 16. 2025
+  Changes:
+    - Only modifies lab drain settings if enabled. This will allow custom entities to add this independently.
+      If quality lab drain setting is disabled, will leave the prototypes untouched for other mods to adjust.
+    - Allow negative values for beacon_power_usage_reduction and crafting_machine_energy_usage_reduction.
+      This will allow for increasing energy costs with quality levels.
+    - Allow for values higher than 1 for energy_usage_quality_scaling on Asteroid Collector.
+      This will allow for higher energy usage scaling if desired.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.63
 Date: 11. 10. 2025
   Bugfix:

@@ -203,7 +203,7 @@ data:extend({{
 	name = "crafting_machine_energy_usage_reduction",
 	setting_type = "startup",
 	default_value = 1 / 6,
-	minimum_value = 0,
+	minimum_value = -10,
 	maximum_value = 1,
 	order = "d1"
 }, {
@@ -307,7 +307,7 @@ data:extend({{
 	name = "beacon_power_usage_reduction",
 	setting_type = "startup",
 	default_value = 1 / 6,
-	minimum_value = 0,
+	minimum_value = -10,
 	maximum_value = 1,
 	order = "g5"
 }, {
@@ -545,7 +545,7 @@ if mods["space-age"] then
 		setting_type = "startup",
 		default_value = 0.1,
 		minimum_value = 0,
-		maximum_value = 1,
+		maximum_value = 10,
 		order = "n3"
 	}, {
 		type = "int-setting",
