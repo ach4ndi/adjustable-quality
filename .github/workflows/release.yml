@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Optional version override (e.g. 1.2.3)'
+        description: "Optional version override (e.g. 1.2.3)"
         required: false
         type: string
 
@@ -70,3 +70,17 @@ jobs:
           name: adjustable-quality ${{ env.VERSION }}
           files: |
             ${{ env.ZIP_NAME }}
+      - name: Upload ZIP to Factorio Mod Portal
+        if: env.EXISTS == 'false'
+        env:
+          FACTORIO_SECRET: ${{ secrets.FACTORIO_SECRET }}
+        run: |
+          set -euo pipefail
+          echo "Uploading $ZIP_NAME to Factorio mod portal..."
+          http_status=$(curl -sS -w "%{http_code}" -o /dev/null -X POST "https://mods.factorio.com/api/mods/upload" -H "Accept: application/json" -F "token=${FACTORIO_SECRET}" -F "file=@${ZIP_NAME}") || true
+          echo "HTTP status: $http_status"
+          if [ "${http_status:0:1}" != "2" ]; then
+            echo "Upload failed with HTTP $http_status" >&2
+            exit 1
+          fi
+          echo "Upload succeeded (HTTP $http_status)"
