@@ -19,12 +19,27 @@ data:extend({{
 	order = "a1"
 }, {
 	type = "int-setting",
+	name = "maximum_quality_jump",
+	setting_type = "startup",
+	default_value = 255,
+	minimum_value = 1,
+	maximum_value = 255,
+	order = "a2"
+}, {
+	type = "string-setting",
+	name = "normal_level_name",
+	setting_type = "startup",
+	default_value = "Normal",
+	allow_blank = false,
+	order = "b1a"
+}, {
+	type = "int-setting",
 	name = "normal_level",
 	setting_type = "startup",
 	default_value = 0,
 	minimum_value = 0,
 	maximum_value = 20,
-	order = "b0"
+	order = "b1b"
 }, {
 	type = "double-setting",
 	name = "normal_next_probability",
@@ -32,7 +47,14 @@ data:extend({{
 	default_value = 0.1,
 	minimum_value = 0,
 	maximum_value = 1,
-	order = "b1"
+	order = "b1c"
+}, {
+	type = "string-setting",
+	name = "uncommon_level_name",
+	setting_type = "startup",
+	default_value = "Uncommon",
+	allow_blank = false,
+	order = "b2a"
 }, {
 	type = "int-setting",
 	name = "uncommon_level",
@@ -40,7 +62,7 @@ data:extend({{
 	default_value = 1,
 	minimum_value = 1,
 	maximum_value = 20,
-	order = "b2"
+	order = "b2b"
 }, {
 	type = "double-setting",
 	name = "uncommon_next_probability",
@@ -48,7 +70,14 @@ data:extend({{
 	default_value = 0.1,
 	minimum_value = 0,
 	maximum_value = 1,
-	order = "b3"
+	order = "b2c"
+}, {
+	type = "string-setting",
+	name = "rare_level_name",
+	setting_type = "startup",
+	default_value = "Rare",
+	allow_blank = false,
+	order = "b3a"
 }, {
 	type = "int-setting",
 	name = "rare_level",
@@ -56,7 +85,7 @@ data:extend({{
 	default_value = 2,
 	minimum_value = 1,
 	maximum_value = 20,
-	order = "b4"
+	order = "b3b"
 }, {
 	type = "double-setting",
 	name = "rare_next_probability",
@@ -64,7 +93,14 @@ data:extend({{
 	default_value = 0.1,
 	minimum_value = 0,
 	maximum_value = 1,
-	order = "b5"
+	order = "b3c"
+}, {
+	type = "string-setting",
+	name = "epic_level_name",
+	setting_type = "startup",
+	default_value = "Epic",
+	allow_blank = false,
+	order = "b4a"
 }, {
 	type = "int-setting",
 	name = "epic_level",
@@ -72,7 +108,7 @@ data:extend({{
 	default_value = 3,
 	minimum_value = 1,
 	maximum_value = 20,
-	order = "b6"
+	order = "b4b"
 }, {
 	type = "double-setting",
 	name = "epic_next_probability",
@@ -80,7 +116,14 @@ data:extend({{
 	default_value = 0.1,
 	minimum_value = 0,
 	maximum_value = 1,
-	order = "b7"
+	order = "b4c"
+}, {
+	type = "string-setting",
+	name = "legendary_level_name",
+	setting_type = "startup",
+	default_value = "Legendary",
+	allow_blank = false,
+	order = "b5a"
 }, {
 	type = "int-setting",
 	name = "legendary_level",
@@ -88,7 +131,7 @@ data:extend({{
 	default_value = 5,
 	minimum_value = 1,
 	maximum_value = 20,
-	order = "b8"
+	order = "b5b"
 }, {
 	type = "double-setting",
 	name = "quality_module_1",
@@ -145,6 +188,12 @@ data:extend({{
 	order = "c6"
 }, {
 	type = "bool-setting",
+	name = "quality_affects_energy_usage_furnace",
+	setting_type = "startup",
+	default_value = false,
+	order = "d0a"
+}, {
+	type = "bool-setting",
 	name = "quality_affects_energy_usage_crafting",
 	setting_type = "startup",
 	default_value = false,
@@ -154,7 +203,7 @@ data:extend({{
 	name = "crafting_machine_energy_usage_reduction",
 	setting_type = "startup",
 	default_value = 1 / 6,
-	minimum_value = 0,
+	minimum_value = -10,
 	maximum_value = 1,
 	order = "d1"
 }, {
@@ -163,6 +212,12 @@ data:extend({{
 	setting_type = "startup",
 	default_value = false,
 	order = "d2"
+}, {
+	type = "bool-setting",
+	name = "quality_affects_module_slots_furnace",
+	setting_type = "startup",
+	default_value = false,
+	order = "d2a"
 }, {
 	type = "double-setting",
 	name = "crafting_machine_module_slots_bonus",
@@ -252,7 +307,7 @@ data:extend({{
 	name = "beacon_power_usage_reduction",
 	setting_type = "startup",
 	default_value = 1 / 6,
-	minimum_value = 0,
+	minimum_value = -10,
 	maximum_value = 1,
 	order = "g5"
 }, {
@@ -447,7 +502,7 @@ data:extend({{
 	order = "m1"
 }})
 
-if mods["space-age"] then
+if mods["space-age"] or (mods["space-exploration"] and mods["quality-se"]) then
 	data:extend({{
 		type = "double-setting",
 		name = "fork_chance_increase_per_quality_level_chain_active_trigger",
@@ -456,7 +511,11 @@ if mods["space-age"] then
 		minimum_value = 0,
 		maximum_value = 1,
 		order = "m0"
-	}, {
+	}})
+end
+
+if mods["space-age"] then
+	data:extend({{
 		type = "int-setting",
 		name = "asteroid_collector_collection_radius_bonus",
 		setting_type = "startup",
@@ -486,7 +545,7 @@ if mods["space-age"] then
 		setting_type = "startup",
 		default_value = 0.1,
 		minimum_value = 0,
-		maximum_value = 1,
+		maximum_value = 10,
 		order = "n3"
 	}, {
 		type = "int-setting",
@@ -512,5 +571,301 @@ if mods["space-age"] then
 		minimum_value = 0,
 		maximum_value = 1,
 		order = "n6"
+	}})
+end
+
+if (mods["Additional-Qualities"] or mods["Quality-Plus-Plus"]) then
+	if not (data.raw["double-setting"] and data.raw["double-setting"]["legendary_next_probability"]) then
+		data:extend({{
+			type = "double-setting",
+			name = "legendary_next_probability",
+			setting_type = "startup",
+			default_value = 0.1,
+			minimum_value = 0.01,
+			maximum_value = 1.0,
+			order = "b5c"
+		}})
+	end
+end
+
+-- Additional Qualities mod support
+if mods["Additional-Qualities"] then
+	data:extend({ -- Mythic Quality
+	{
+		type = "string-setting",
+		name = "mythic_level_name",
+		setting_type = "startup",
+		default_value = "Mythic",
+		allow_blank = false,
+		order = "b6a"
+	}, {
+		type = "int-setting",
+		name = "mythic_level",
+		setting_type = "startup",
+		default_value = 7,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b6b"
+	}, {
+		type = "double-setting",
+		name = "mythic_next_probability",
+		setting_type = "startup",
+		default_value = 0.1,
+		minimum_value = 0.01,
+		maximum_value = 1.0,
+		order = "b6c"
+	}, -- Relic Quality
+	{
+		type = "string-setting",
+		name = "relic_level_name",
+		setting_type = "startup",
+		default_value = "Relic",
+		allow_blank = false,
+		order = "b7a"
+	}, {
+		type = "int-setting",
+		name = "relic_level",
+		setting_type = "startup",
+		default_value = 9,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b7b"
+	}, {
+		type = "double-setting",
+		name = "relic_next_probability",
+		setting_type = "startup",
+		default_value = 0.1,
+		minimum_value = 0.01,
+		maximum_value = 1.0,
+		order = "b7c"
+	}, -- Masterwork Quality
+	{
+		type = "string-setting",
+		name = "masterwork_level_name",
+		setting_type = "startup",
+		default_value = "Masterwork",
+		allow_blank = false,
+		order = "b8a"
+	}, {
+		type = "int-setting",
+		name = "masterwork_level",
+		setting_type = "startup",
+		default_value = 12,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b8b"
+	}, {
+		type = "double-setting",
+		name = "masterwork_next_probability",
+		setting_type = "startup",
+		default_value = 0.1,
+		minimum_value = 0.01,
+		maximum_value = 1.0,
+		order = "b8c"
+	}, -- Eternal Quality
+	{
+		type = "string-setting",
+		name = "eternal_level_name",
+		setting_type = "startup",
+		default_value = "Eternal",
+		allow_blank = false,
+		order = "b9a"
+	}, {
+		type = "int-setting",
+		name = "eternal_level",
+		setting_type = "startup",
+		default_value = 15,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b9b"
+	}, {
+		type = "double-setting",
+		name = "eternal_next_probability",
+		setting_type = "startup",
+		default_value = 0.1,
+		minimum_value = 0.01,
+		maximum_value = 1.0,
+		order = "b9c"
+	}, -- Transcendent Quality
+	{
+		type = "string-setting",
+		name = "transcendent_level_name",
+		setting_type = "startup",
+		default_value = "Transcendent",
+		allow_blank = false,
+		order = "b9d"
+	}, {
+		type = "int-setting",
+		name = "transcendent_level",
+		setting_type = "startup",
+		default_value = 20,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b9e"
+	}, {
+		type = "int-setting",
+		name = "mythic_science_pack_drain",
+		setting_type = "startup",
+		default_value = 93,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4a"
+	}, {
+		type = "int-setting",
+		name = "relic_science_pack_drain",
+		setting_type = "startup",
+		default_value = 91,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4b"
+	}, {
+		type = "int-setting",
+		name = "masterwork_science_pack_drain",
+		setting_type = "startup",
+		default_value = 88,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4c"
+	}, {
+		type = "int-setting",
+		name = "eternal_science_pack_drain",
+		setting_type = "startup",
+		default_value = 85,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4d"
+	}, {
+		type = "int-setting",
+		name = "transcendent_science_pack_drain",
+		setting_type = "startup",
+		default_value = 80,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4e"
+	}})
+end
+
+-- Quality Plus Plus mod support
+if mods["Quality-Plus-Plus"] then
+	data:extend({ -- Mythical
+	{
+		type = "string-setting",
+		name = "mythical_level_name",
+		setting_type = "startup",
+		default_value = "Mythical",
+		allow_blank = false,
+		order = "b6a"
+	}, {
+		type = "int-setting",
+		name = "mythical_level",
+		setting_type = "startup",
+		default_value = 6,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b6b"
+	}, {
+		type = "double-setting",
+		name = "mythical_next_probability",
+		setting_type = "startup",
+		default_value = 0.10,
+		minimum_value = 0.0,
+		maximum_value = 1.0,
+		order = "b6c"
+	}, -- Masterwork
+	{
+		type = "string-setting",
+		name = "masterwork_level_name",
+		setting_type = "startup",
+		default_value = "Masterwork",
+		allow_blank = false,
+		order = "b7a"
+	}, {
+		type = "int-setting",
+		name = "masterwork_level",
+		setting_type = "startup",
+		default_value = 7,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b7b"
+	}, {
+		type = "double-setting",
+		name = "masterwork_next_probability",
+		setting_type = "startup",
+		default_value = 0.10,
+		minimum_value = 0.0,
+		maximum_value = 1.0,
+		order = "b7c"
+	}, -- Wondrous
+	{
+		type = "string-setting",
+		name = "wondrous_level_name",
+		setting_type = "startup",
+		default_value = "Wondrous",
+		allow_blank = false,
+		order = "b8a"
+	}, {
+		type = "int-setting",
+		name = "wondrous_level",
+		setting_type = "startup",
+		default_value = 8,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b8b"
+	}, {
+		type = "double-setting",
+		name = "wondrous_next_probability",
+		setting_type = "startup",
+		default_value = 0.10,
+		minimum_value = 0.0,
+		maximum_value = 1.0,
+		order = "b8c"
+	}, -- Artifactual
+	{
+		type = "string-setting",
+		name = "artifactual_level_name",
+		setting_type = "startup",
+		default_value = "Artifactual",
+		allow_blank = false,
+		order = "b9a"
+	}, {
+		type = "int-setting",
+		name = "artifactual_level",
+		setting_type = "startup",
+		default_value = 10,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "b9b"
+	}, {
+		type = "int-setting",
+		name = "mythical_science_pack_drain",
+		setting_type = "startup",
+		default_value = 94,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4a"
+	}, {
+		type = "int-setting",
+		name = "masterwork_science_pack_drain",
+		setting_type = "startup",
+		default_value = 93,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4b"
+	}, {
+		type = "int-setting",
+		name = "wondrous_science_pack_drain",
+		setting_type = "startup",
+		default_value = 92,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4c"
+	}, {
+		type = "int-setting",
+		name = "artifactual_science_pack_drain",
+		setting_type = "startup",
+		default_value = 90,
+		minimum_value = 1,
+		maximum_value = 100,
+		order = "j4d"
 	}})
 end

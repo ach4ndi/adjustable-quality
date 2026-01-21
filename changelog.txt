@@ -1,4 +1,51 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.64
+Date: 11. 16. 2025
+  Changes:
+    - Only modifies lab drain settings if enabled. This will allow custom entities to add this independently.
+      If quality lab drain setting is disabled, will leave the prototypes untouched for other mods to adjust.
+    - Allow negative values for beacon_power_usage_reduction and crafting_machine_energy_usage_reduction.
+      This will allow for increasing energy costs with quality levels.
+    - Allow for values higher than 1 for energy_usage_quality_scaling on Asteroid Collector.
+      This will allow for higher energy usage scaling if desired.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.63
+Date: 11. 10. 2025
+  Bugfix:
+    - Check for nil before comparing number.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.62
+Date: 11. 10. 2025
+  Bugfix:
+    - Remove stray end operator from previous edit.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.61
+Date: 11. 9. 2025
+  Changes:
+    - Fixes support for "God Module" style addons and unlink_quality_from_speed option
+---------------------------------------------------------------------------------------------------
+Version: 2.0.60
+Date: 11. 1. 2025
+  Changes:
+    - Add adjustment point for all quality level names.
+    - Add options for enabling furnace module slot and energy use scaling with quality.
+    - Add support for Additional Quality mod. This gives adjustment points for the 5 additional quality levels.
+    - No current plan to support the optional quality levels beyond transcendent.
+    - Add support for Quality Plus Plus. This gives adjustment points for the 4 additional quality levels.
+    - Both of these mods use the generic scaling values for all settings other than name, level, lab science pack drain, and next probability.
+    - Legendary gains an adjustment point for next probability if either of these mods are loaded.
+    - Incremented base game dependency to 2.0.69
+---------------------------------------------------------------------------------------------------
+Version: 2.0.59
+Date: 10. 31. 2025
+  Changes:
+    - Add maximum quality jump setting to control how many quality tiers can be skipped in a single upgrade.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.58
+Date: 10. 24. 2025
+  Changes:
+    - Add logic for enabling fork chance adjustment for space exploration.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.57
 Date: 10. 12. 2025
   Changes:

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Optional version override (e.g. 1.2.3)'
+        description: "Optional version override (e.g. 1.2.3)"
         required: false
         type: string
 
@@ -24,12 +24,15 @@ jobs:
         id: get_version
         run: |
           version=$(jq -r '.version' info.json)
+          name=$(jq -r '.name' info.json)
           echo "VERSION=$version" >> $GITHUB_ENV
-          echo "::set-output name=version::$version"
+          echo "NAME=$name" >> $GITHUB_ENV
+          echo "version=$version" >> $GITHUB_OUTPUT
 
       - name: Check if tag exists
         id: check_tag
         run: |
+          git fetch --tags
           if git rev-parse "refs/tags/v$VERSION" >/dev/null 2>&1; then
             echo "Tag exists."
             echo "EXISTS=true" >> $GITHUB_ENV
@@ -45,6 +48,7 @@ jobs:
           exit 0
 
       - name: Create tag
+        if: env.EXISTS == 'false'
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
@@ -52,6 +56,7 @@ jobs:
           git push origin "v$VERSION"
 
       - name: Prepare release zip
+        if: env.EXISTS == 'false'
         run: |
           folder="adjustable-quality_$VERSION"
           mkdir "$folder"
@@ -61,8 +66,34 @@ jobs:
 
       - name: Create GitHub Release and Upload Zip
         uses: softprops/action-gh-release@v2
+        if: env.EXISTS == 'false'
         with:
           tag_name: v${{ env.VERSION }}
           name: adjustable-quality ${{ env.VERSION }}
           files: |
             ${{ env.ZIP_NAME }}
+      - name: Upload ZIP to Factorio Mod Portal
+        if: env.EXISTS == 'false'
+        env:
+          FACTORIO_SECRET: ${{ secrets.FACTORIO_SECRET }}
+          MOD_NAME: ${{ env.NAME }}
+          ZIP_PATH: ${{ env.ZIP_NAME }}
+        run: |
+          set -euo pipefail
+          echo "Initializing upload for mod: $MOD_NAME"
+          INIT_URL="https://mods.factorio.com/api/v2/mods/releases/init_upload"
+          init_response=$(curl -sS -H "Authorization: Bearer ${FACTORIO_SECRET}" -H "Accept: application/json" -d "mod=${MOD_NAME}" "${INIT_URL}")
+          echo "Init response: $init_response"
+          upload_url=$(echo "$init_response" | jq -r .upload_url)
+          if [ -z "$upload_url" ] || [ "$upload_url" = "null" ]; then
+            echo "init_upload failed: $init_response" >&2
+            exit 1
+          fi
+          echo "Uploading $ZIP_PATH to $upload_url"
+          http_status=$(curl -sS -w "%{http_code}" -o /dev/null -X POST -F "file=@${ZIP_PATH};type=application/zip" "$upload_url") || true
+          echo "Upload HTTP status: $http_status"
+          if [ "${http_status:0:1}" != "2" ]; then
+            echo "Upload failed with HTTP $http_status" >&2
+            exit 1
+          fi
+          echo "Upload succeeded (HTTP $http_status)"
